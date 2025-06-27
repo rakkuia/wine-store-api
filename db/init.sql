@@ -36,10 +36,10 @@ CREATE TABLE clientes (
     contato VARCHAR(100)
 );
 
-CREATE TABLE condicoes_pagamento (
-    id SERIAL PRIMARY KEY,
-    descricao VARCHAR(50) UNIQUE
-);
+-- CREATE TABLE condicoes_pagamento (
+--     id SERIAL PRIMARY KEY,
+--     descricao VARCHAR(50) UNIQUE
+-- );
 
 CREATE TABLE pedidos (
     id SERIAL PRIMARY KEY,
@@ -48,8 +48,9 @@ CREATE TABLE pedidos (
     data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     total NUMERIC(10, 2) NOT NULL,
     comissao NUMERIC(5, 2),
-    condicao_pagamento INTEGER REFERENCES condicoes_pagamento(id),
-    valor_comissao NUMERIC(10, 2)
+    condicao_pagamento VARCHAR(50),
+    valor_comissao NUMERIC(10, 2),
+    pedido_status BOOLEAN DEFAULT FALSE,
 );
 
 CREATE TABLE pedido_itens (
@@ -76,7 +77,7 @@ CREATE TABLE usuarios (
     perfil VARCHAR(20) CHECK (perfil IN ('admin', 'representante', 'institucional'))
 );
 
-INSERT INTO condicoes_pagamento (descricao) VALUES ('À vista'), ('30 dias'), ('60 dias'), ('Parcelado em 3x');
+-- INSERT INTO condicoes_pagamento (descricao) VALUES ('À vista'), ('30 dias'), ('60 dias'), ('Parcelado em 3x');
 
 INSERT INTO representantes (nome, email, telefone)
 VALUES ('João Vendedor', 'joao@email.com', '11999999999');

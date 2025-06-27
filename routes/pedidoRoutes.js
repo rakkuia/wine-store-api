@@ -2,10 +2,9 @@ const express = require('express');
 const router = express.Router();
 const pedidoController = require('../controllers/pedidoController');
 
-// Cria um novo pedido
 router.post('/', pedidoController.createPedido);
-
-// Busca um pedido por ID
 router.get('/:id', pedidoController.getPedidoById);
-
+router.put('/:id', pedidoController.updatePedido);
+router.delete('/:id', pedidoController.deletePedido);
+router.get('/', pedidoController.getAllPedidos);
 module.exports = router;
