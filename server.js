@@ -8,7 +8,9 @@ const representanteRouter = require('./routes/representanteRoutes');
 const pedidoRouter = require('./routes/pedidoRoutes');
 const rotaRouter = require('./routes/rotaRoutes');
 const usuarioRouter = require('./routes/usuarioRoutes');
+const cors = require('cors'); 
 
+app.use(cors()); 
 app.use(express.json());
 
 app.use('/api/vinhos', vinhoRouter);
