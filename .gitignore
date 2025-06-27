@@ -30,7 +30,6 @@ coverage/
 bower_components/
 
 # Environment variables
-.env
 .env.test
 .env.production
 .env.local

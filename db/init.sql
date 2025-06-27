@@ -49,8 +49,7 @@ CREATE TABLE pedidos (
     total NUMERIC(10, 2) NOT NULL,
     comissao NUMERIC(5, 2),
     condicao_pagamento VARCHAR(50),
-    valor_comissao NUMERIC(10, 2),
-    pedido_status BOOLEAN DEFAULT FALSE,
+    valor_comissao NUMERIC(10, 2)
 );
 
 CREATE TABLE pedido_itens (

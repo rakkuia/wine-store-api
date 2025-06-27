@@ -18,8 +18,7 @@ exports.createPedido = async (req, res) => {
       condicao_pagamento: condicaoPagamento,
       comissao,
       valor_comissao: valorComissao,
-      total,
-      pedido_status: false,
+      total
     });
 
     for (const item of itens) {
@@ -53,7 +52,6 @@ exports.updatePedido = async (req, res) => {
       comissao,
       valor_comissao: valorComissao,
       total,
-      pedido_status,
     });
 
     await pedidoModel.deleteItensByPedidoId(req.params.id);
@@ -112,7 +110,6 @@ exports.getAllPedidos = async (req, res) => {
       comissao: Number(pedido.comissao),
       condicaoPagamento: String(pedido.condicao_pagamento),
       valorComissao: Number(pedido.valor_comissao),
-      pedido_status: pedido.pedido_status,
     }));
 
     res.json(pedidosFormatados);

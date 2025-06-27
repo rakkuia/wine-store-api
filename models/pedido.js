@@ -1,24 +1,24 @@
 const pool = require('../config/db');
 
 const createPedido = async (pedidoData) => {
-  const { cliente_id, representante_id, total, condicao_pagamento, comissao, valor_comissao, pedido_status } = pedidoData;
+  const { cliente_id, representante_id, total, condicao_pagamento, comissao, valor_comissao } = pedidoData;
   const res = await pool.query(
     `INSERT INTO pedidos 
-    (cliente_id, representante_id, total, condicao_pagamento, comissao, valor_comissao, pedido_status) 
-    VALUES ($1, $2, $3, $4, $5, $6, $7) 
+    (cliente_id, representante_id, total, condicao_pagamento, comissao, valor_comissao) 
+    VALUES ($1, $2, $3, $4, $5, $6) 
     RETURNING *`,
-    [cliente_id, representante_id, total, condicao_pagamento, comissao, valor_comissao, pedido_status]
+    [cliente_id, representante_id, total, condicao_pagamento, comissao, valor_comissao]
   );
   return res.rows[0];
 };
 
 const updatePedido = async (id, pedidoData) => {
-  const { cliente_id, representante_id, total, condicao_pagamento, comissao, valor_comissao, pedido_status } = pedidoData;
+  const { cliente_id, representante_id, total, condicao_pagamento, comissao, valor_comissao } = pedidoData;
   const res = await pool.query(
     `UPDATE pedidos SET 
-      cliente_id=$1, representante_id=$2, total=$3, condicao_pagamento=$4, comissao=$5, valor_comissao=$6, pedido_status=$7
-      WHERE id=$8 RETURNING *`,
-    [cliente_id, representante_id, total, condicao_pagamento, comissao, valor_comissao, pedido_status, id]
+      cliente_id=$1, representante_id=$2, total=$3, condicao_pagamento=$4, comissao=$5, valor_comissao=$6
+      WHERE id=$7 RETURNING *`,
+    [cliente_id, representante_id, total, condicao_pagamento, comissao, valor_comissao, id]
   );
   return res.rows[0];
 };
